@@ -32,3 +32,17 @@ porta.
 5. Inicie um contêiner a partir da imagem personalizada e verifique se o aplicativo está
 acessível no navegador.
 
+
+### Resposta
+
+1. Criar e configurar o arquivo Dockerfile.
+
+2. Executar os comandos abaixo
+
+`docker build .`
+
+`docker container run -d -p 8080:3000 (ID_Da_Imagem)`
+
+Confira a execução do container:
+
+`docker ps`
