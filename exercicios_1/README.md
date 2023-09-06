@@ -78,3 +78,4 @@ serviços estão funcionando corretamente.
 
 - Executar os comandos abaixo:
 
+1. `docker compose up`
