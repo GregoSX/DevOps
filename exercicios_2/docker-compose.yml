@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todolist
+    ports:
+      - "3030:5432"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    command: ["postgres", "-c", "log_statement=all"]
+
+  app:
+    build:
+      context: .              # Caminho para o diretório que contém o Dockerfile da aplicação
+      dockerfile: Dockerfile  # Nome do Dockerfile da aplicação
+    restart: always
+    ports:
+      - "3000:3000"          # Mapeie a porta da aplicação para a mesma porta no host
+    depends_on:
+      - db                    # Garanta que o serviço de banco de dados seja iniciado antes do serviço da aplicação
