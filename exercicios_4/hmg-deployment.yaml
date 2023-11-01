@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-hmg
+  namespace: hmg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-hmg
+  template:
+    metadata:
+      labels:
+        app: myapp-hmg
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp-image:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service-hmg
+  namespace: hmg
+spec:
+  selector:
+    app: myapp-hmg
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
